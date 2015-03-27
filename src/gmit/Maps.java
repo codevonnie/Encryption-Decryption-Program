@@ -1,9 +1,6 @@
 package gmit;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Maps {
 
@@ -40,7 +37,8 @@ public class Maps {
 	}
 	
 	public void createArrayLists(String keyword) {
-		for(int i=0; i<keyword.length();i++){
+		int len=keyword.length();
+		for(int i=0; i<len;i++){
 			
 			matrix.add(i, new ArrayList<String>());
 			matrixDec.add(i, new ArrayList<String>());

@@ -25,7 +25,7 @@ public class TestRunner {
 		
 		encrypt.fillArrayListEnc(keyword, maps.getMatrix(), letters); //pass keyword, arraylist and 
 		
-		int[] keyInt = decode.sortArrayList(keyword);
+		int[] keyInt = encrypt.sortArrayList(keyword);
 		
 		encrypt.writeToFile(maps.getMatrix(), keyInt);
 		
