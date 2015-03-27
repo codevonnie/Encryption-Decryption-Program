@@ -1,26 +1,18 @@
 package gmit;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 public class Decode {
 
 	public int[] sortArrayList(String keyword) {
 		char[] sortedKey=keyword.toCharArray(); //make char array with keyword value
 		char[] oriKey=keyword.toCharArray();
-		int keyInt [] = new int[keyword.length()]; //make int array to correspond to keyword values
+		int len=keyword.length();
+		int keyInt [] = new int[len]; //make int array to correspond to keyword values
 		Arrays.sort(sortedKey); //sort keyword alphabetically
-		for(int i=0; i<keyword.length(); i++){
-			for(int j=0; j<keyword.length();j++){
+		for(int i=0; i<len; i++){
+			for(int j=0; j<len;j++){
 				if(sortedKey[i]==oriKey[j]){
 					keyInt[i]=j;
 					sortedKey[i]='¬';
@@ -62,14 +54,16 @@ public class Decode {
 		
 		StringBuilder sb = new StringBuilder();
 		int rows, j=0, i=0;
-		if(noChars%keyword.length()!=0){
-			rows=(noChars/keyword.length())+1;
+		int len=keyword.length();
+		int mod=noChars%len;
+		if(mod!=0){
+			rows=(noChars/len)+1;
 		}
 		else{
-			rows=(noChars/keyword.length());
+			rows=(noChars/len);
 		}
 		while((j<rows)&&(noChars!=0)){
-			while((i<keyword.length())&&(noChars!=0)){
+			while((i<len)&&(noChars!=0)){
 							
 					sb.append(matrixDec.get(i).get(j));
 					noChars--;
@@ -97,9 +91,10 @@ public class Decode {
 		String chr;
 		int i;
 		char[] letters=words.toCharArray(); //convert string value to a character array
-		for(i=0;i<letters.length;i+=2){
+		int len=letters.length;
+		for(i=0;i<len;i+=2){
 			
-			chr=Character.toString(letters[i]).toString()+Character.toString(letters[i+1]).toString();
+			chr=Character.toString(letters[i])+Character.toString(letters[i+1]);
 			
 			if(polybius.containsKey(chr)){
 					
