@@ -5,8 +5,8 @@ import java.util.*;
 public class Maps {
 
 	private static Map<String,String> polybius=new HashMap<String,String>(100);
-	private static List<List<String>> matrix = new ArrayList<List<String>>();
-	private static List<List<String>> matrixDec = new ArrayList<List<String>>();
+	private static List<List<Character>> matrix = new ArrayList<List<Character>>();
+	private static List<List<Character>> matrixDec = new ArrayList<List<Character>>();
 	
 	public void setMap() {
 		polybius.put("AA", "P");polybius.put("P","AA");polybius.put("AD", "H");polybius.put("H", "AD");polybius.put("AF", "0");
@@ -28,6 +28,7 @@ public class Maps {
 		polybius.put("XX", "8");polybius.put("8", "XX");polybius.put("XZ", "-");polybius.put("-", "XZ");polybius.put("ZA", "(");
 		polybius.put("(", "ZA");polybius.put("ZD", ")");polybius.put(")", "ZD");polybius.put("ZF", ":");polybius.put(":", "ZF");
 		polybius.put("ZG", ";");polybius.put(";", "ZG");polybius.put("ZV", "*");polybius.put("*", "ZV");
+		polybius.put("ZV", "\n");polybius.put("\n","ZV");
 	}//setMap
 	
 	public Map<String, String> getMap() {
@@ -36,22 +37,30 @@ public class Maps {
 		
 	}
 	
+	/*method to create arraylists for encryption and decryption 
+	 * depending on the length of the code word inputted by the user.   
+	 * This method is contant time 0(1) because the arraylists
+	 * are being added to the end
+	 */
 	public void createArrayLists(String keyword) {
 		int len=keyword.length();
-		for(int i=0; i<len;i++){
+		int i=0;
+		//for(int i=0; i<len;i++){
+		while(i<len){
 			
-			matrix.add(i, new ArrayList<String>());
-			matrixDec.add(i, new ArrayList<String>());
+			matrix.add(i, new ArrayList<Character>()); 
+			matrixDec.add(i, new ArrayList<Character>());
+			i++;
 		}
 	}//createArrayLists
 	
-	public List<List<String>> getMatrix(){
+	public List<List<Character>> getMatrix(){
 		
 		return matrix;
 		
 	}
 	
-	public List<List<String>> getMatrixDec(){
+	public List<List<Character>> getMatrixDec(){
 		
 		return matrixDec;
 	}
